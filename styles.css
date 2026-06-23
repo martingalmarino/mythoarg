@@ -437,7 +437,12 @@ address    { font-style: normal; }
   display: flex;
   align-items: center;
   overflow: hidden;
+  /* CSS background-image: most reliable approach for hero backgrounds */
   background-color: #080808;
+  background-image: url('/images/hero.jpeg');
+  background-size: cover;
+  background-position: 60% center;
+  background-repeat: no-repeat;
 }
 
 /* Red hairline at bottom — brand detail */
@@ -452,46 +457,37 @@ address    { font-style: normal; }
   z-index: 4;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Focus point: right side shows the image, left side stays for text */
-  object-position: 60% center;
-  /* Full opacity — the overlay handles dimming */
-  opacity: 1;
-}
-
 /*
-  OVERLAY STRATEGY — single clean split gradient:
-  Left (0–40%):  dark enough to guarantee text legibility
-  Mid  (40–65%): smooth fade — no hard edge
-  Right (65–100%): very light tint — photo shows with full impact
+  OVERLAY — ::before pseudo-element on .hero itself.
+  Left (0–38%):  dark → text and CTAs always legible
+  Mid  (38–60%): smooth fade
+  Right (60–100%): very light → photo visible with full impact
 */
-.hero-overlay {
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to right,
-    rgba(5, 5, 5, .88) 0%,
-    rgba(5, 5, 5, .82) 25%,
-    rgba(5, 5, 5, .60) 42%,
-    rgba(5, 5, 5, .28) 62%,
-    rgba(5, 5, 5, .10) 100%
+    rgba(5, 5, 5, .90) 0%,
+    rgba(5, 5, 5, .80) 25%,
+    rgba(5, 5, 5, .55) 42%,
+    rgba(5, 5, 5, .22) 62%,
+    rgba(5, 5, 5, .06) 100%
   );
 }
 
-/* Decorative circles — red-tinted */
+/* Hide the old HTML img+overlay — CSS bg now handles everything */
+.hero-bg     { display: none; }
+.hero-overlay { display: none; }
+
+/* Decorative circles — sit above the overlay */
 .hero-circle {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 .hero-circle--xl {
   width: 600px; height: 600px;
@@ -514,7 +510,7 @@ address    { font-style: normal; }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding-top: calc(var(--header-h) + var(--sp-8));
   padding-bottom: var(--sp-24);
   max-width: 660px;
@@ -571,7 +567,7 @@ address    { font-style: normal; }
   bottom: var(--sp-10);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 4;
 }
 .hero-scroll-line {
   display: block;
@@ -1484,19 +1480,11 @@ address    { font-style: normal; }
   .filter-tab               { font-size: 0.6rem; padding: 0.35rem 0.7rem; }
   .manifesto-quote p        { font-size: 1.1rem; }
 
-  /* Mobile: full-width dark overlay since text fills the screen */
-  .hero-overlay {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(5, 5, 5, .82) 0%,
-        rgba(5, 5, 5, .65) 50%,
-        rgba(5, 5, 5, .75) 100%
-      );
+  /* Mobile: center image and use a uniform overlay via ::before */
+  .hero {
+    background-position: center center;
   }
-  /* Center image on mobile */
-  .hero-image {
-    object-position: center center;
-    opacity: 1;
+  .hero::before {
+    background: rgba(5, 5, 5, .72);
   }
 }
