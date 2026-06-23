@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="MYTHO Bruma — anteojos de receta en bio acetato translúcido">
+  <defs>
+    <!-- Translucent light gray frame -->
+    <linearGradient id="b-frame" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%"   stop-color="#A8A4A0"/>
+      <stop offset="100%" stop-color="#787470"/>
+    </linearGradient>
+    <!-- Clear lens — barely-there tint -->
+    <radialGradient id="b-lens" cx="35%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#E8E5E0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#C8C4BE" stop-opacity="0.40"/>
+    </radialGradient>
+    <!-- Rim top highlight -->
+    <linearGradient id="b-shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="b-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur"/>
+      <feOffset dx="0" dy="8" result="offset"/>
+      <feFlood flood-color="#706C68" flood-opacity="0.20" result="col"/>
+      <feComposite in="col" in2="offset" operator="in" result="shad"/>
+      <feMerge><feMergeNode in="shad"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="b-refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#A0A0A0" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#A0A0A0" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F7F5F2"/>
+  <rect x="0" y="406" width="800" height="40" fill="url(#b-refl)"/>
+
+  <g filter="url(#b-sh)">
+
+    <!-- ══ LEFT ROUNDED SOFT SHAPE ══ -->
+    <!--
+      BRUMA: soft rounded rectangle — wider than oval,
+      slightly flatter top, more curved base — contemporary feel.
+    -->
+    <!-- Outer frame -->
+    <rect x="146" y="238" width="234" height="118" rx="52" ry="52" fill="url(#b-frame)"/>
+    <!-- Frame translucency shimmer -->
+    <rect x="146" y="238" width="234" height="58" rx="52" ry="52" fill="url(#b-shine)" opacity="0.35"/>
+    <!-- Lens inner -->
+    <rect x="158" y="250" width="210" height="94" rx="42" ry="42" fill="url(#b-lens)"/>
+    <!-- Lens surface — clear sparkle -->
+    <rect x="168" y="256" width="86" height="38" rx="18" fill="rgba(255,255,255,0.22)"/>
+    <!-- Inner rim line -->
+    <rect x="158" y="250" width="210" height="94" rx="42" ry="42"
+          fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+
+    <!-- ══ RIGHT ROUNDED SOFT SHAPE ══ -->
+    <rect x="420" y="238" width="234" height="118" rx="52" ry="52" fill="url(#b-frame)"/>
+    <rect x="420" y="238" width="234" height="58" rx="52" ry="52" fill="url(#b-shine)" opacity="0.35"/>
+    <rect x="432" y="250" width="210" height="94" rx="42" ry="42" fill="url(#b-lens)"/>
+    <rect x="442" y="256" width="86" height="38" rx="18" fill="rgba(255,255,255,0.22)"/>
+    <rect x="432" y="250" width="210" height="94" rx="42" ry="42"
+          fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+
+    <!-- ══ BRIDGE ══ -->
+    <path d="M 380 289 C 377 275 389 270 400 270 C 411 270 423 275 420 289"
+          stroke="#949090" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <!-- Bridge shine -->
+    <path d="M 382 283 C 380 277 391 274 400 274 C 409 274 418 277 418 283"
+          stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose pads -->
+    <ellipse cx="381" cy="300" rx="3.5" ry="5" fill="#8A8680" opacity="0.65"/>
+    <ellipse cx="419" cy="300" rx="3.5" ry="5" fill="#8A8680" opacity="0.65"/>
+
+    <!-- ══ LEFT TEMPLE — thin delicate ══ -->
+    <path d="M 146 288 C 96 290 58 294 18 300"
+          stroke="#949090" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <!-- Temple highlight -->
+    <path d="M 146 284 C 96 286 58 290 18 296"
+          stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- ══ RIGHT TEMPLE ══ -->
+    <path d="M 654 288 C 704 290 742 294 782 300"
+          stroke="#949090" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M 654 284 C 704 286 742 290 782 296"
+          stroke="rgba(255,255,255,0.32)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  </g>
+
+  <text x="400" y="552"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="9.5" font-weight="300" letter-spacing="8"
+    text-anchor="middle" fill="#BDB9B2">MYTHO BRUMA</text>
+</svg>

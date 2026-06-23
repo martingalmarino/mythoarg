@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="MYTHO Sur — anteojos round en bio acetato">
+  <defs>
+    <!-- Tortoise acetate frame gradient -->
+    <radialGradient id="s-outer" cx="38%" cy="30%" r="72%">
+      <stop offset="0%"   stop-color="#9E6535"/>
+      <stop offset="45%"  stop-color="#6B3E18"/>
+      <stop offset="100%" stop-color="#3D1E07"/>
+    </radialGradient>
+    <!-- Tortoise striation overlay (right lens shifted) -->
+    <radialGradient id="s-outer-r" cx="35%" cy="30%" r="72%">
+      <stop offset="0%"   stop-color="#A06838"/>
+      <stop offset="48%"  stop-color="#6D4015"/>
+      <stop offset="100%" stop-color="#3A1C06"/>
+    </radialGradient>
+    <!-- Amber-tinted lens -->
+    <radialGradient id="s-lens" cx="36%" cy="34%" r="68%">
+      <stop offset="0%"   stop-color="#C8843A" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#6E3A0A" stop-opacity="0.70"/>
+    </radialGradient>
+    <filter id="s-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="blur"/>
+      <feOffset dx="0" dy="12" result="offset"/>
+      <feFlood flood-color="#3A1A00" flood-opacity="0.22" result="col"/>
+      <feComposite in="col" in2="offset" operator="in" result="shad"/>
+      <feMerge><feMergeNode in="shad"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Temple gradient -->
+    <linearGradient id="s-temple" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0%"   stop-color="#7A4520"/>
+      <stop offset="100%" stop-color="#4A2408"/>
+    </linearGradient>
+    <linearGradient id="s-refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#6B3E18" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#6B3E18" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F7F5F2"/>
+  <rect x="0" y="408" width="800" height="44" fill="url(#s-refl)"/>
+
+  <g filter="url(#s-sh)">
+
+    <!-- ══ LEFT ROUND FRAME (thick acetate) ══ -->
+    <!-- Outer ring — tortoise, thick -->
+    <circle cx="262" cy="295" r="114" fill="url(#s-outer)"/>
+    <!-- Acetate depth: inner shadow rim -->
+    <circle cx="262" cy="295" r="114"
+            fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="6"/>
+    <!-- Lens -->
+    <circle cx="262" cy="295" r="98" fill="url(#s-lens)"/>
+    <!-- Specular highlight -->
+    <ellipse cx="232" cy="268" rx="30" ry="18" fill="rgba(255,255,255,0.13)" transform="rotate(-18 232 268)"/>
+    <!-- Rim shine top -->
+    <path d="M 175 232 Q 218 198 262 197 Q 306 198 348 232"
+          stroke="rgba(255,255,255,0.22)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- ══ RIGHT ROUND FRAME ══ -->
+    <circle cx="538" cy="295" r="114" fill="url(#s-outer-r)"/>
+    <circle cx="538" cy="295" r="114"
+            fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="6"/>
+    <circle cx="538" cy="295" r="98" fill="url(#s-lens)"/>
+    <ellipse cx="508" cy="268" rx="30" ry="18" fill="rgba(255,255,255,0.13)" transform="rotate(-18 508 268)"/>
+    <path d="M 451 232 Q 494 198 538 197 Q 582 198 624 232"
+          stroke="rgba(255,255,255,0.22)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- ══ BRIDGE — thick acetate ══ -->
+    <path d="M 376 287 C 373 271 387 264 400 264 C 413 264 427 271 424 287"
+          stroke="url(#s-temple)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <!-- Bridge top highlight -->
+    <path d="M 378 280 C 376 274 390 270 400 270 C 410 270 422 274 422 280"
+          stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose pads -->
+    <ellipse cx="381" cy="299" rx="4" ry="5.5" fill="#3A1A06" opacity="0.55"/>
+    <ellipse cx="419" cy="299" rx="4" ry="5.5" fill="#3A1A06" opacity="0.55"/>
+
+    <!-- ══ LEFT TEMPLE — thick acetate bar ══ -->
+    <path d="M 148 283 C 98 286 58 290 20 298"
+          stroke="url(#s-temple)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <!-- Temple top shine -->
+    <path d="M 148 279 C 98 282 58 285 20 293"
+          stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- ══ RIGHT TEMPLE ══ -->
+    <path d="M 652 283 C 702 286 742 290 780 298"
+          stroke="url(#s-temple)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <path d="M 652 279 C 702 282 742 285 780 293"
+          stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  </g>
+
+  <text x="400" y="552"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="9.5" font-weight="300" letter-spacing="8"
+    text-anchor="middle" fill="#BDB9B2">MYTHO SUR</text>
+</svg>

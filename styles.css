@@ -1,0 +1,1476 @@
+/* ============================================================
+   MYTHO ARGENTINA — styles.css
+   Brand-Aligned Redesign — Minimal · Editorial · Red-Forward
+   Version: 2.0.0  |  © 2026 MYTHO Eyewear
+
+   BRAND PRINCIPLES (from MYTHO visual identity)
+   -----------------------------------------------
+   · Red (#FF003C) is THE signature brand accent
+   · Near-black as primary dark tone
+   · White as the main background — maximum white space
+   · Typography: light/thin weights (200–300), wide letter-spacing
+   · Uppercase navigation, tracked — Swiss editorial feel
+   · No decorative roundness — square corners only
+   · Shadows: barely perceptible or none
+   · Borders: 1px hairline, very subtle
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  Design Tokens
+   2.  Reset & Base
+   3.  Layout Utilities
+   4.  Typography Helpers
+   5.  Buttons
+   6.  SVG Icon Color Overrides
+   7.  Header & Navigation
+   8.  Hero Section
+   9.  Manifesto Section
+   10. Why MYTHO (Feature Cards)
+   11. Collection & Product Grid
+   12. Technology & Materials
+   13. Store Locator
+   14. Omnichannel Bridge
+   15. B2B Section & Form
+   16. FAQ Accordion
+   17. Footer
+   18. Scroll Reveal
+   19. Responsive Overrides
+   ============================================================ */
+
+
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* --- Brand Palette (MYTHO-true) --- */
+  --red:       #FF003C;   /* PRIMARY — signature brand red */
+  --red-hover: #CC002F;   /* Darker red for hover states   */
+  --black:     #0A0A0A;   /* Near-black — hero, footer bg  */
+  --navy:      #060622;   /* Deep navy — dark sections     */
+  --white:     #FFFFFF;
+  --offwhite:  #F7F5F2;   /* Warm off-white — alt sections */
+  --warm-gray: #D6D0C8;
+  --charcoal:  #1A1A1A;   /* Near-black text               */
+  --mid-gray:  #8A8480;   /* Muted / secondary text        */
+
+  /* --- Semantic Aliases --- */
+  --accent:     var(--red);
+  --bg:         var(--white);
+  --bg-off:     var(--offwhite);
+  --bg-dark:    var(--black);
+  --text:       var(--charcoal);
+  --text-muted: var(--mid-gray);
+  --border:     #E5E1DC;
+
+  /* --- Typography --- */
+  --font: Inter, 'Helvetica Neue', Arial, sans-serif;
+
+  /* --- Type Scale --- */
+  --text-xxs:  0.625rem;   /* 10px */
+  --text-xs:   0.6875rem;  /* 11px */
+  --text-sm:   0.8125rem;  /* 13px */
+  --text-base: 1rem;       /* 16px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  2rem;       /* 32px */
+  --text-3xl:  2.75rem;    /* 44px */
+  --text-4xl:  4rem;       /* 64px */
+  --text-5xl:  5.5rem;     /* 88px */
+
+  /* --- Font Weights --- */
+  --fw-thin:     200;
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* --- Spacing Scale --- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-28: 7rem;
+  --sp-32: 8rem;
+  --sp-40: 10rem;
+
+  /* --- Layout --- */
+  --container: 1280px;
+  --gutter:    2rem;
+  --header-h:  60px;
+
+  /* --- Radii (MYTHO: square — no rounding) --- */
+  --r-xs:   0px;
+  --r-sm:   0px;
+  --r-md:   0px;
+  --r-full: 9999px;
+
+  /* --- Shadows (barely-there — editorial) --- */
+  --shadow-xs: 0 1px 4px rgba(0,0,0,.04);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.07);
+  --shadow-md: 0 6px 28px rgba(0,0,0,.10);
+
+  /* --- Transitions --- */
+  --ease-fast: 120ms ease;
+  --ease-base: 220ms ease;
+  --ease-slow: 380ms ease;
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--text-base);
+  font-weight: var(--fw-light);   /* Brand default: light 300 */
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+ul, ol     { list-style: none; }
+a          { color: inherit; text-decoration: none; transition: color var(--ease-fast); }
+button     { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; font-size: inherit; }
+abbr       { cursor: help; text-decoration: none; font-size: .85em; color: var(--red); }
+address    { font-style: normal; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ============================================================
+   3. LAYOUT UTILITIES
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section-header { margin-bottom: var(--sp-12); }
+
+
+/* ============================================================
+   4. TYPOGRAPHY HELPERS
+   ============================================================ */
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: var(--sp-4);
+}
+.section-eyebrow--light { color: rgba(255,255,255,.4); }
+
+.section-title {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--fw-light);      /* Thin titles — brand weight */
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--charcoal);
+  margin-bottom: var(--sp-4);
+}
+.section-title--light { color: var(--white); }
+
+.section-subtitle {
+  font-size: var(--text-base);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.85;
+  max-width: 56ch;
+}
+.section-subtitle--light { color: rgba(255,255,255,.45); }
+
+
+/* ============================================================
+   5. BUTTONS
+   Uppercase, tracked, square corners — red primary
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.75rem 1.75rem;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--ease-base),
+    color var(--ease-base),
+    border-color var(--ease-base);
+}
+.btn:focus-visible {
+  outline: 1.5px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* Primary — RED fill (MYTHO signature) */
+.btn-primary {
+  background-color: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+.btn-primary:hover {
+  background-color: var(--red-hover);
+  border-color: var(--red-hover);
+}
+
+/* Secondary — ghost on dark hero */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,.4);
+}
+.btn-secondary:hover {
+  border-color: var(--white);
+  background-color: rgba(255,255,255,.08);
+}
+
+/* Outline — on light bg */
+.btn-outline {
+  background-color: transparent;
+  color: var(--charcoal);
+  border-color: var(--charcoal);
+}
+.btn-outline:hover {
+  background-color: var(--charcoal);
+  color: var(--white);
+}
+
+/* Ghost / text link */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: var(--fw-light);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+}
+.btn-ghost:hover { color: var(--charcoal); }
+
+.btn-sm { padding: 0.5rem 1.1rem;  font-size: var(--text-xxs); }
+.btn-lg { padding: 0.9rem 2.25rem; font-size: var(--text-xs);  }
+
+
+/* ============================================================
+   6. SVG ICON COLOR OVERRIDES
+   All inline SVGs respond to CSS `color` of their parent.
+   No need to edit HTML attributes directly.
+   ============================================================ */
+
+/* Feature card icons — brand red */
+.feature-card-icon          { color: var(--red); }
+.feature-card-icon [stroke] { stroke: currentColor; }
+.feature-card-icon [fill]:not([fill="none"]) { fill: currentColor; }
+
+/* Technology icons — muted white on dark bg */
+.tech-icon          { color: rgba(255,255,255,.52); }
+.tech-icon [stroke] { stroke: currentColor; }
+.tech-icon [fill]:not([fill="none"]) { fill: currentColor; }
+
+/* B2B card icons — red (already currentColor in HTML) */
+.b2b-card-icon { color: var(--red); }
+
+/* Form success icon */
+.form-success svg          { color: var(--red); }
+.form-success svg [stroke] { stroke: currentColor; }
+
+
+/* ============================================================
+   7. HEADER & NAVIGATION
+   Brand: thin logo, uppercase tracked nav, transparent → solid
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: var(--header-h);
+  background-color: transparent;
+  transition: background-color var(--ease-base), border-color var(--ease-base);
+}
+.site-header.is-scrolled {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Transparent state — light text over hero */
+.site-header.is-transparent .logo,
+.site-header.is-transparent .nav-link    { color: var(--white); }
+.site-header.is-transparent .header-cta {
+  border-color: rgba(255,255,255,.4);
+  color: var(--white);
+}
+.site-header.is-transparent .header-cta:hover {
+  background-color: var(--white);
+  color: var(--charcoal);
+  border-color: var(--white);
+}
+.site-header.is-transparent .hamburger-line { background-color: var(--white); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--sp-8);
+}
+
+/* --- LOGO: thin + wide tracking — matches MYTHO.com --- */
+.logo {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-light);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  flex-shrink: 0;
+  transition: color var(--ease-fast);
+}
+.logo:hover { color: var(--red); }
+
+/* --- NAVIGATION --- */
+.main-nav { flex: 1; display: flex; justify-content: center; }
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* Brand nav: uppercase, thin weight, tracked */
+.nav-link {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--ease-fast), border-color var(--ease-fast);
+}
+.nav-link:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.header-cta { flex-shrink: 0; }
+
+/* --- HAMBURGER (1px thin lines — brand aesthetic) --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--sp-2);
+}
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 1px;               /* Ultra-thin lines */
+  background-color: var(--charcoal);
+  transition: transform var(--ease-base), opacity var(--ease-base);
+}
+.hamburger.is-active .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.is-active .hamburger-line:nth-child(2) { opacity: 0; }
+.hamburger.is-active .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+
+/* ============================================================
+   8. HERO SECTION
+   Brand reference: dominant red, editorial, minimal text
+   We use a dark base + red gradient overlay to evoke the
+   brand's red hero photography aesthetic
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #080808;
+}
+
+/* Red hairline at bottom — brand detail */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--red);
+  z-index: 4;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0.3;
+}
+
+/* Dark-to-red editorial overlay — brand visual */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(6, 6, 6, .98)  0%,
+    rgba(8, 8, 8, .88)  38%,
+    rgba(180, 0, 34, .60) 72%,
+    rgba(255, 0, 60, .82) 100%
+  );
+}
+
+/* Decorative circles — red-tinted */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-circle--xl {
+  width: 600px; height: 600px;
+  right: -60px; top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 0, 60, .1);
+}
+.hero-circle--lg {
+  width: 340px; height: 340px;
+  right: 110px; top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 0, 60, .2);
+}
+.hero-circle--sm {
+  width: 130px; height: 130px;
+  right: 230px; top: 36%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--header-h) + var(--sp-8));
+  padding-bottom: var(--sp-24);
+  max-width: 660px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 0.3rem 0.75rem;
+  margin-bottom: var(--sp-8);
+}
+
+/* Ultra-thin large headline */
+.hero-headline {
+  font-size: clamp(2.75rem, 7.5vw, var(--text-5xl));
+  font-weight: var(--fw-thin);    /* THIN — brand characteristic */
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: var(--sp-6);
+}
+
+.hero-subheadline {
+  font-size: clamp(var(--text-md), 2vw, var(--text-xl));
+  font-weight: var(--fw-thin);
+  color: rgba(255, 255, 255, .8);
+  line-height: 1.5;
+  margin-bottom: var(--sp-4);
+}
+
+.hero-supporting {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255, 255, 255, .5);
+  max-width: 46ch;
+  line-height: 1.85;
+  margin-bottom: var(--sp-10);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: var(--sp-10);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.hero-scroll-line {
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.45));
+  margin: auto;
+  animation: scrollPulse 2.4s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: .2; }
+  55%       { opacity: .7; }
+}
+
+
+/* ============================================================
+   9. MANIFESTO SECTION
+   Editorial typography — brand voice
+   ============================================================ */
+
+.manifesto {
+  padding-block: var(--sp-40);
+  background-color: var(--white);
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+  align-items: center;
+}
+
+.manifesto-body {
+  font-size: var(--text-md);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.95;
+  max-width: 44ch;
+  margin-top: var(--sp-6);
+}
+
+.manifesto-quote-col {
+  display: flex;
+  align-items: center;
+}
+
+/* Red left bar — brand quote treatment */
+.manifesto-quote {
+  font-style: normal;
+  border-left: 2px solid var(--red);
+  padding-left: var(--sp-8);
+}
+
+.quote-glyph {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4rem;
+  line-height: .5;
+  color: var(--red);
+  margin-bottom: var(--sp-5);
+}
+
+.manifesto-quote p {
+  font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+  font-weight: var(--fw-thin);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+}
+
+
+/* ============================================================
+   10. WHY MYTHO — FEATURE CARDS
+   Hairline grid, hover on background only — no border jump
+   ============================================================ */
+
+.why-mytho {
+  padding-block: var(--sp-32);
+  background-color: var(--offwhite);
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+}
+
+.feature-card {
+  background-color: var(--white);
+  padding: var(--sp-12) var(--sp-8);
+  transition: background-color var(--ease-base);
+}
+.feature-card:hover { background-color: #fdfcfb; }
+
+.feature-card-icon {
+  margin-bottom: var(--sp-6);
+  display: block;
+}
+
+.feature-card-title {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  margin-bottom: var(--sp-3);
+}
+
+.feature-card-text {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+
+
+/* ============================================================
+   11. COLLECTION & PRODUCT GRID
+   Lookbook tight grid — image-first, minimal card body
+   ============================================================ */
+
+.collection {
+  padding-block: var(--sp-32);
+  background-color: var(--white);
+}
+
+/* Filter bar — underline style, uppercase tabs */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-10);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--sp-5);
+}
+
+.filter-tab {
+  padding: 0.4rem 0.875rem;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--ease-fast), background-color var(--ease-fast);
+}
+.filter-tab:hover { color: var(--charcoal); }
+.filter-tab.active,
+.filter-tab[aria-selected="true"] {
+  background-color: var(--red);
+  color: var(--white);
+}
+.filter-tab:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Products grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+}
+.product-card.is-hidden { display: none; }
+
+.product-card {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--ease-base);
+}
+.product-card:hover {
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+}
+
+.product-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--offwhite);
+}
+.product-img {
+  width: 100%;
+  height: 100%;
+  /* SVG illustrations: contain so the eyewear is never cropped */
+  object-fit: contain;
+  /* Small padding gives air around the illustration */
+  padding: 1.25rem 1rem;
+  transition: transform var(--ease-slow);
+}
+.product-card:hover .product-img { transform: scale(1.04); }
+
+.product-tag {
+  position: absolute;
+  top: var(--sp-4);
+  left: var(--sp-4);
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background-color: var(--red);
+  padding: 0.2rem 0.5rem;
+}
+
+.product-body {
+  padding: var(--sp-5) var(--sp-6) var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-cat {
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.product-name {
+  font-size: var(--text-base);
+  font-weight: var(--fw-light);
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+  margin-top: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.product-desc {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: var(--sp-5);
+  flex: 1;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: flex-start;
+}
+
+.product-secondary-link {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: 0.02em;
+  transition: color var(--ease-fast);
+}
+.product-secondary-link:hover { color: var(--red); }
+
+
+/* ============================================================
+   12. TECHNOLOGY & MATERIALS
+   Dark charcoal, four horizontal hairline blocks
+   ============================================================ */
+
+.technology {
+  padding-block: var(--sp-32);
+  background-color: var(--charcoal);
+  color: var(--white);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-left: 1px solid rgba(255,255,255,.06);
+}
+
+.tech-block {
+  padding: var(--sp-12) var(--sp-8);
+  border-right: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background-color var(--ease-base);
+}
+.tech-block:hover { background-color: rgba(255,255,255,.025); }
+
+.tech-icon {
+  margin-bottom: var(--sp-5);
+  display: block;
+  opacity: .85;
+}
+
+.tech-title {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--white);
+  margin-bottom: var(--sp-3);
+  letter-spacing: 0.02em;
+}
+
+.tech-text {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.38);
+  line-height: 1.85;
+}
+
+
+/* ============================================================
+   13. STORE LOCATOR
+   ============================================================ */
+
+.locator {
+  padding-block: var(--sp-32);
+  background-color: var(--offwhite);
+}
+
+.city-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-10);
+}
+
+.city-btn {
+  padding: 0.45rem 1.1rem;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--white);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+.city-btn:hover {
+  border-color: var(--charcoal);
+  color: var(--charcoal);
+}
+.city-btn.is-active,
+.city-btn[aria-pressed="true"] {
+  background-color: var(--charcoal);
+  border-color: var(--charcoal);
+  color: var(--white);
+}
+.city-btn:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 2px;
+}
+
+.stores-grid {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--border);
+}
+.stores-grid.active,
+.stores-grid.is-active { display: grid; }
+
+.store-card {
+  background-color: var(--white);
+  padding: var(--sp-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-5);
+  transition: background-color var(--ease-base);
+}
+.store-card:hover { background-color: #fdfcfb; }
+
+.store-name {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  color: var(--charcoal);
+  margin-bottom: var(--sp-1);
+}
+
+.store-neighborhood {
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: var(--sp-2);
+}
+
+.store-address {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.store-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+.stores-note {
+  margin-top: var(--sp-8);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+
+/* ============================================================
+   14. OMNICHANNEL BRIDGE
+   Horizontal flow — connected hairline boxes
+   ============================================================ */
+
+.omnichannel {
+  padding-block: var(--sp-32);
+  background-color: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.flow-steps {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  gap: 1px;
+  background-color: var(--border);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--sp-8) var(--sp-6);
+  background-color: var(--white);
+  scroll-snap-align: start;
+  transition: background-color var(--ease-base);
+}
+.flow-step:hover { background-color: var(--offwhite); }
+
+.step-number {
+  display: block;
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: var(--sp-4);
+}
+
+.step-title {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--charcoal);
+  margin-bottom: var(--sp-2);
+}
+
+.step-text {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* Arrow items hidden — gap handles visual separation */
+.flow-arrow { display: none; }
+
+
+/* ============================================================
+   15. B2B SECTION & FORM
+   Near-black background — premium retailer section
+   ============================================================ */
+
+.b2b {
+  padding-block: var(--sp-32);
+  background-color: #0A0A0A;
+  color: var(--white);
+}
+
+.b2b-header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: var(--sp-16);
+}
+
+.b2b-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: rgba(255,255,255,.07);
+  margin-bottom: var(--sp-16);
+}
+
+.b2b-card {
+  background-color: #0A0A0A;
+  padding: var(--sp-10) var(--sp-8);
+  transition: background-color var(--ease-base);
+}
+.b2b-card:hover { background-color: rgba(255,255,255,.025); }
+
+.b2b-card-icon {
+  margin-bottom: var(--sp-5);
+  display: block;
+}
+
+.b2b-card-title {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  color: var(--white);
+  margin-bottom: var(--sp-3);
+}
+
+.b2b-card-text {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.38);
+  line-height: 1.85;
+}
+
+.b2b-form-wrap {
+  max-width: 820px;
+  margin-inline: auto;
+  border: 1px solid rgba(255,255,255,.08);
+  padding: var(--sp-12);
+}
+
+.b2b-form-title {
+  font-size: var(--text-xl);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: var(--sp-8);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.form-label {
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.7rem 0.875rem;
+  background-color: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  transition: border-color var(--ease-fast), background-color var(--ease-fast);
+}
+.form-input::placeholder { color: rgba(255,255,255,.2); }
+.form-input:focus {
+  outline: none;
+  border-color: var(--red);
+  background-color: rgba(255,255,255,.06);
+}
+.form-input.has-error { border-color: var(--red); }
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-error {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  color: var(--red);
+  font-style: italic;
+  min-height: 1em;
+}
+
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  border: 1px solid rgba(255, 0, 60, .28);
+  padding: var(--sp-6) var(--sp-8);
+  margin-bottom: var(--sp-8);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.72);
+  line-height: 1.65;
+}
+.form-success[hidden] { display: none; }
+
+
+/* ============================================================
+   16. FAQ ACCORDION
+   ============================================================ */
+
+.faq {
+  padding-block: var(--sp-32);
+  background-color: var(--white);
+  border-top: 1px solid var(--border);
+}
+
+.faq-list {
+  max-width: 700px;
+  margin-top: var(--sp-10);
+}
+
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--sp-6) 0;
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.01em;
+  color: var(--charcoal);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: var(--sp-4);
+  transition: color var(--ease-fast);
+}
+.faq-question:hover { color: var(--red); }
+.faq-question:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 3px;
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  color: var(--red);
+  transition: transform var(--ease-base);
+  display: flex;
+  align-items: center;
+}
+.faq-question[aria-expanded="true"] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding-bottom: var(--sp-6);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: var(--text-muted);
+  line-height: 1.9;
+  max-width: 62ch;
+}
+.faq-answer[hidden] { display: none; }
+
+
+/* ============================================================
+   17. FOOTER
+   Brand reference: minimal near-black, thin type,
+   red newsletter submit button (matches MYTHO.com "ENVIAR")
+   ============================================================ */
+
+.site-footer {
+  background-color: #0A0A0A;
+  color: var(--white);
+  padding-top: var(--sp-20);
+  padding-bottom: var(--sp-8);
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-16);
+}
+
+/* Logo — thin tracked, same as header */
+.footer-logo {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-light);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--white);
+  display: inline-block;
+  margin-bottom: var(--sp-4);
+  transition: color var(--ease-fast);
+}
+.footer-logo:hover { color: var(--red); }
+
+.footer-tagline {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.35);
+  line-height: 1.75;
+  max-width: 28ch;
+  margin-bottom: var(--sp-6);
+}
+
+.footer-socials { display: flex; gap: var(--sp-4); }
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  transition: color var(--ease-fast);
+}
+.footer-social-link:hover { color: var(--white); }
+
+.footer-nav-heading {
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-bottom: var(--sp-5);
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.footer-nav-link {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.45);
+  letter-spacing: 0.03em;
+  transition: color var(--ease-fast);
+}
+.footer-nav-link:hover { color: var(--white); }
+
+.footer-newsletter-desc {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.35);
+  line-height: 1.7;
+  margin-bottom: var(--sp-4);
+}
+
+.newsletter-field {
+  display: flex;
+  border: 1px solid rgba(255,255,255,.14);
+  margin-bottom: var(--sp-2);
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.65rem 0.875rem;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-light);
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,.22); }
+.newsletter-input:focus        { outline: none; }
+
+/* RED submit — matches MYTHO.com "ENVIAR" button */
+.newsletter-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  background-color: var(--red);
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--ease-fast);
+}
+.newsletter-btn:hover { background-color: var(--red-hover); }
+.newsletter-btn:focus-visible {
+  outline: 1px solid var(--white);
+  outline-offset: -1px;
+}
+
+.newsletter-feedback {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.4);
+  min-height: 1.1em;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: var(--sp-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.footer-legal {
+  font-size: var(--text-xxs);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,.2);
+  letter-spacing: 0.06em;
+}
+
+
+/* ============================================================
+   18. SCROLL REVEAL
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.48s ease, transform 0.48s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   19. RESPONSIVE OVERRIDES
+   ============================================================ */
+
+@media (min-width: 640px)  { :root { --gutter: 2.25rem; } }
+@media (min-width: 1024px) { :root { --gutter: 3rem;    } }
+
+/* ─── Mobile (≤ 899px) ─── */
+@media (max-width: 899px) {
+
+  .hamburger  { display: flex; }
+  .header-cta { display: none; }
+
+  .main-nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background-color: var(--white);
+    border-top: 1px solid var(--border);
+    padding: var(--sp-8) var(--sp-6) var(--sp-12);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--ease-base), opacity var(--ease-base);
+    z-index: 190;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .main-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-6);
+  }
+  .site-header.is-transparent .main-nav .nav-link {
+    color: var(--charcoal) !important;
+    border-bottom-color: transparent !important;
+  }
+  .nav-link { font-size: var(--text-md); }
+
+  .manifesto-grid    { grid-template-columns: 1fr; gap: var(--sp-12); }
+  .manifesto-body    { max-width: none; }
+  .feature-cards     { grid-template-columns: 1fr; }
+  .products-grid     { grid-template-columns: repeat(2, 1fr); }
+  .tech-grid         { grid-template-columns: repeat(2, 1fr); }
+  .b2b-cards         { grid-template-columns: 1fr; }
+  .b2b-form-wrap     { padding: var(--sp-8) var(--sp-6); }
+  .form-row          { grid-template-columns: 1fr; }
+  .stores-grid       { grid-template-columns: 1fr; }
+  .store-card        { flex-direction: column; align-items: stretch; }
+  .store-actions     { flex-direction: row; flex-wrap: wrap; }
+  .flow-steps        { flex-direction: column; overflow-x: unset; }
+  .footer-grid       { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+  .footer-bottom     { flex-direction: column; align-items: flex-start; }
+}
+
+/* ─── Small mobile (≤ 479px) ─── */
+@media (max-width: 479px) {
+  :root { --gutter: 1.25rem; }
+
+  .hero-headline            { font-size: 2.4rem; }
+  .hero-circle              { display: none; }
+  .hero-ctas                { flex-direction: column; }
+  .products-grid            { grid-template-columns: 1fr; }
+  .tech-grid                { grid-template-columns: 1fr; }
+  .footer-grid              { grid-template-columns: 1fr; }
+  .filter-tab               { font-size: 0.6rem; padding: 0.35rem 0.7rem; }
+  .manifesto-quote p        { font-size: 1.1rem; }
+}

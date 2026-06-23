@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="MYTHO Atlántico — anteojos de sol gran formato">
+  <defs>
+    <!-- Deep navy frame -->
+    <linearGradient id="at-frame" x1="0" y1="0" x2="0.12" y2="1">
+      <stop offset="0%"   stop-color="#22274E"/>
+      <stop offset="100%" stop-color="#0C0F28"/>
+    </linearGradient>
+    <!-- Navy-tinted dark lens -->
+    <radialGradient id="at-lens" cx="34%" cy="31%" r="70%">
+      <stop offset="0%"   stop-color="#1E2444"/>
+      <stop offset="100%" stop-color="#080A18"/>
+    </radialGradient>
+    <!-- Temple gradient -->
+    <linearGradient id="at-temple" x1="0" y1="0" x2="1" y2="0.2">
+      <stop offset="0%"   stop-color="#1A1F48"/>
+      <stop offset="100%" stop-color="#080A1A"/>
+    </linearGradient>
+    <filter id="at-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="16" result="blur"/>
+      <feOffset dx="0" dy="12" result="offset"/>
+      <feFlood flood-color="#0A0C22" flood-opacity="0.24" result="col"/>
+      <feComposite in="col" in2="offset" operator="in" result="shad"/>
+      <feMerge><feMergeNode in="shad"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="at-refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0A0C22" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0A0C22" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Top rim shine -->
+    <linearGradient id="at-shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F7F5F2"/>
+  <rect x="0" y="412" width="800" height="48" fill="url(#at-refl)"/>
+
+  <g filter="url(#at-sh)">
+
+    <!-- ══ LEFT OVERSIZED FRAME ══ -->
+    <!--
+      ATLÁNTICO: large statement frame — wide, bold.
+      Larger lenses, thick frame presence.
+    -->
+    <!-- Outer frame — large rounded rect -->
+    <rect x="120" y="226" width="270" height="148" rx="22" ry="22" fill="url(#at-frame)"/>
+    <!-- Top bar shine (premium detail) -->
+    <rect x="120" y="226" width="270" height="44" rx="22" ry="22" fill="url(#at-shine)"/>
+    <!-- Frame edge highlight -->
+    <rect x="120" y="226" width="270" height="148" rx="22" ry="22"
+          fill="none" stroke="rgba(80,95,160,0.20)" stroke-width="2"/>
+    <!-- Lens -->
+    <rect x="133" y="239" width="244" height="122" rx="15" ry="15" fill="url(#at-lens)"/>
+    <!-- Specular highlight — wide reflective band -->
+    <ellipse cx="238" cy="264" rx="68" ry="22" fill="rgba(255,255,255,0.07)" transform="rotate(-10 238 264)"/>
+    <!-- Lens rim inner -->
+    <rect x="133" y="239" width="244" height="122" rx="15" ry="15"
+          fill="none" stroke="rgba(100,120,200,0.10)" stroke-width="1.5"/>
+
+    <!-- ══ RIGHT OVERSIZED FRAME ══ -->
+    <rect x="410" y="226" width="270" height="148" rx="22" ry="22" fill="url(#at-frame)"/>
+    <rect x="410" y="226" width="270" height="44" rx="22" ry="22" fill="url(#at-shine)"/>
+    <rect x="410" y="226" width="270" height="148" rx="22" ry="22"
+          fill="none" stroke="rgba(80,95,160,0.20)" stroke-width="2"/>
+    <rect x="423" y="239" width="244" height="122" rx="15" ry="15" fill="url(#at-lens)"/>
+    <ellipse cx="528" cy="264" rx="68" ry="22" fill="rgba(255,255,255,0.07)" transform="rotate(-10 528 264)"/>
+    <rect x="423" y="239" width="244" height="122" rx="15" ry="15"
+          fill="none" stroke="rgba(100,120,200,0.10)" stroke-width="1.5"/>
+
+    <!-- ══ BRIDGE — bold bar ══ -->
+    <path d="M 390 293 C 388 278 393 270 400 270 C 407 270 412 278 410 293"
+          stroke="#0E1130" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <!-- Bridge top shine -->
+    <path d="M 392 286 C 391 280 396 277 400 277 C 404 277 409 280 408 286"
+          stroke="rgba(80,100,200,0.25)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose pads -->
+    <ellipse cx="389" cy="304" rx="4" ry="5.5" fill="#080A18" opacity="0.55"/>
+    <ellipse cx="411" cy="304" rx="4" ry="5.5" fill="#080A18" opacity="0.55"/>
+
+    <!-- ══ LEFT TEMPLE — bold, thick ══ -->
+    <path d="M 120 295 C 80 297 48 300 18 306"
+          stroke="url(#at-temple)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <!-- Temple top highlight -->
+    <path d="M 120 289 C 80 291 48 294 18 300"
+          stroke="rgba(80,100,200,0.20)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Hinge -->
+    <rect x="112" y="285" width="14" height="22" rx="2" fill="#141830"/>
+
+    <!-- ══ RIGHT TEMPLE ══ -->
+    <path d="M 680 295 C 720 297 752 300 782 306"
+          stroke="url(#at-temple)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <path d="M 680 289 C 720 291 752 294 782 300"
+          stroke="rgba(80,100,200,0.20)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <rect x="674" y="285" width="14" height="22" rx="2" fill="#141830"/>
+
+  </g>
+
+  <text x="400" y="552"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="9.5" font-weight="300" letter-spacing="8"
+    text-anchor="middle" fill="#BDB9B2">MYTHO ATLÁNTICO</text>
+</svg>

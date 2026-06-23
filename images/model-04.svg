@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="MYTHO Faro — anteojos de sol estilo wayfarer">
+  <defs>
+    <!-- Deep dark lens tint -->
+    <radialGradient id="f-lens" cx="35%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#1C1C22"/>
+      <stop offset="100%" stop-color="#070709"/>
+    </radialGradient>
+    <!-- Matte black frame — flat feel -->
+    <linearGradient id="f-frame" x1="0" y1="0" x2="0.12" y2="1">
+      <stop offset="0%"   stop-color="#1E1E1E"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <!-- Temple gradient -->
+    <linearGradient id="f-temple" x1="0" y1="0" x2="1" y2="0.15">
+      <stop offset="0%"   stop-color="#181818"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <filter id="f-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15" result="blur"/>
+      <feOffset dx="0" dy="11" result="offset"/>
+      <feFlood flood-color="#000000" flood-opacity="0.22" result="col"/>
+      <feComposite in="col" in2="offset" operator="in" result="shad"/>
+      <feMerge><feMergeNode in="shad"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="f-refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#080808" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F7F5F2"/>
+  <rect x="0" y="402" width="800" height="42" fill="url(#f-refl)"/>
+
+  <g filter="url(#f-sh)">
+
+    <!-- ══ LEFT WAYFARER FRAME ══ -->
+    <!--
+      Wayfarer silhouette: classic trapezoidal shape.
+      Top bar is straight, bottom is rounded,
+      outer-top corner connects to temple.
+    -->
+    <!-- Outer frame shape -->
+    <path d="
+      M 148 240
+      L 148 318
+      Q 148 332 162 332
+      L 374 332
+      Q 388 332 388 318
+      L 388 240
+      Q 388 226 376 226
+      L 160 226
+      Q 148 226 148 240 Z"
+      fill="url(#f-frame)"/>
+    <!-- Top bar thicker line (wayfarer key detail) -->
+    <rect x="148" y="226" width="240" height="16" rx="2" fill="rgba(255,255,255,0.035)"/>
+    <!-- Lens -->
+    <path d="
+      M 159 248
+      L 159 318
+      Q 159 322 164 322
+      L 372 322
+      Q 377 322 377 318
+      L 377 248
+      Q 377 238 372 238
+      L 165 238
+      Q 159 238 159 248 Z"
+      fill="url(#f-lens)"/>
+    <!-- Specular highlight top-left -->
+    <ellipse cx="218" cy="256" rx="40" ry="16" fill="rgba(255,255,255,0.07)" transform="rotate(-12 218 256)"/>
+
+    <!-- ══ RIGHT WAYFARER FRAME ══ -->
+    <path d="
+      M 412 240
+      L 412 318
+      Q 412 332 426 332
+      L 638 332
+      Q 652 332 652 318
+      L 652 240
+      Q 652 226 640 226
+      L 424 226
+      Q 412 226 412 240 Z"
+      fill="url(#f-frame)"/>
+    <rect x="412" y="226" width="240" height="16" rx="2" fill="rgba(255,255,255,0.035)"/>
+    <path d="
+      M 423 248
+      L 423 318
+      Q 423 322 428 322
+      L 636 322
+      Q 641 322 641 318
+      L 641 248
+      Q 641 238 636 238
+      L 429 238
+      Q 423 238 423 248 Z"
+      fill="url(#f-lens)"/>
+    <ellipse cx="482" cy="256" rx="40" ry="16" fill="rgba(255,255,255,0.07)" transform="rotate(-12 482 256)"/>
+
+    <!-- ══ BRIDGE ══ -->
+    <path d="M 388 276 L 388 274 Q 390 260 400 258 Q 410 260 412 274 L 412 276"
+          stroke="#080808" stroke-width="10" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose pads -->
+    <ellipse cx="388" cy="284" rx="4" ry="5" fill="#040404" opacity="0.55"/>
+    <ellipse cx="412" cy="284" rx="4" ry="5" fill="#040404" opacity="0.55"/>
+
+    <!-- ══ LEFT TEMPLE (wider at hinge — wayfarer style) ══ -->
+    <path d="M 148 266 C 120 267 88 270 18 276"
+          stroke="url(#f-temple)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <!-- Hinge block -->
+    <rect x="140" y="258" width="14" height="20" rx="2" fill="#141414"/>
+
+    <!-- ══ RIGHT TEMPLE ══ -->
+    <path d="M 652 266 C 680 267 712 270 782 276"
+          stroke="url(#f-temple)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <rect x="646" y="258" width="14" height="20" rx="2" fill="#141414"/>
+
+  </g>
+
+  <text x="400" y="552"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="9.5" font-weight="300" letter-spacing="8"
+    text-anchor="middle" fill="#BDB9B2">MYTHO FARO</text>
+</svg>

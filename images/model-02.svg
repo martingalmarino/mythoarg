@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="MYTHO Río — anteojos de receta rectangular">
+  <defs>
+    <!-- Clear lens: very light warm gray -->
+    <linearGradient id="r-lens" x1="0" y1="0" x2="0.1" y2="1">
+      <stop offset="0%"   stop-color="#DEDAD5" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#C8C4BE" stop-opacity="0.28"/>
+    </linearGradient>
+    <!-- Frame: dark charcoal, thin wire look -->
+    <linearGradient id="r-frame" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%"   stop-color="#303030"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <filter id="r-sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur"/>
+      <feOffset dx="0" dy="7" result="offset"/>
+      <feFlood flood-color="#000" flood-opacity="0.13" result="col"/>
+      <feComposite in="col" in2="offset" operator="in" result="shad"/>
+      <feMerge><feMergeNode in="shad"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="r-refl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1A1A1A" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#1A1A1A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F7F5F2"/>
+  <rect x="0" y="400" width="800" height="40" fill="url(#r-refl)"/>
+
+  <g filter="url(#r-sh)">
+
+    <!-- ══ LEFT RECTANGULAR FRAME (thin wire look) ══ -->
+    <!-- Outer rect — the frame ring -->
+    <rect x="146" y="248" width="232" height="96" rx="9" ry="9" fill="url(#r-frame)"/>
+    <!-- Inner lens -->
+    <rect x="153" y="255" width="218" height="82" rx="6" ry="6" fill="url(#r-lens)"/>
+    <!-- Lens surface highlight -->
+    <rect x="160" y="260" width="90" height="34" rx="4" fill="rgba(255,255,255,0.14)"/>
+    <!-- Lens inner border line (realistic detail) -->
+    <rect x="153" y="255" width="218" height="82" rx="6" ry="6"
+          fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+    <!-- ══ RIGHT RECTANGULAR FRAME ══ -->
+    <rect x="422" y="248" width="232" height="96" rx="9" ry="9" fill="url(#r-frame)"/>
+    <rect x="429" y="255" width="218" height="82" rx="6" ry="6" fill="url(#r-lens)"/>
+    <rect x="436" y="260" width="90" height="34" rx="4" fill="rgba(255,255,255,0.14)"/>
+    <rect x="429" y="255" width="218" height="82" rx="6" ry="6"
+          fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+    <!-- ══ BRIDGE — thin wire bridge ══ -->
+    <path d="M 378 292 C 376 281 388 276 400 276 C 412 276 424 281 422 292"
+          stroke="#141414" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose pads — metal look -->
+    <ellipse cx="381" cy="302" rx="3" ry="4.5" fill="#1A1A1A" opacity="0.5"/>
+    <ellipse cx="419" cy="302" rx="3" ry="4.5" fill="#1A1A1A" opacity="0.5"/>
+
+    <!-- ══ LEFT TEMPLE — thin wire ══ -->
+    <path d="M 146 287 C 95 289 55 292 18 298"
+          stroke="#141414" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+    <!-- ══ RIGHT TEMPLE ══ -->
+    <path d="M 654 287 C 705 289 745 292 782 298"
+          stroke="#141414" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+  </g>
+
+  <text x="400" y="552"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="9.5" font-weight="300" letter-spacing="8"
+    text-anchor="middle" fill="#BDB9B2">MYTHO RÍO</text>
+</svg>
