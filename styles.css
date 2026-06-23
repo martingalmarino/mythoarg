@@ -752,10 +752,11 @@ address    { font-style: normal; }
 .product-img {
   width: 100%;
   height: 100%;
-  /* SVG illustrations: contain so the eyewear is never cropped */
+  /* contain: shows the full product without cropping */
   object-fit: contain;
-  /* Small padding gives air around the illustration */
-  padding: 1.25rem 1rem;
+  /* Breathing room around the product image */
+  padding: 1.5rem 2rem;
+  background-color: var(--offwhite);
   transition: transform var(--ease-slow);
 }
 .product-card:hover .product-img { transform: scale(1.04); }
