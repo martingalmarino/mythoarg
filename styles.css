@@ -461,49 +461,29 @@ address    { font-style: normal; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Shift focus slightly right so the model/detail shows
-     on the right half while text occupies the left */
-  object-position: 62% center;
-  /* Higher opacity — the image IS the hero */
-  opacity: 0.72;
+  /* Focus point: right side shows the image, left side stays for text */
+  object-position: 60% center;
+  /* Full opacity — the overlay handles dimming */
+  opacity: 1;
 }
 
 /*
-  OVERLAY STRATEGY — editorial split:
-  ─────────────────────────────────────────────────────────
-  Left  (0–42%):  near-black → text headline & CTAs legible
-  Mid   (42–62%): dark fade  → smooth visual transition
-  Right (62–100%): semi-transparent → photo breathes & has impact
-  +
-  Bottom vignette: keeps scroll indicator area grounded
-  ─────────────────────────────────────────────────────────
+  OVERLAY STRATEGY — single clean split gradient:
+  Left (0–40%):  dark enough to guarantee text legibility
+  Mid  (40–65%): smooth fade — no hard edge
+  Right (65–100%): very light tint — photo shows with full impact
 */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    /* Left-to-right text-protection gradient */
-    linear-gradient(
-      95deg,
-      rgba(5, 5, 5, .97) 0%,
-      rgba(5, 5, 5, .93) 28%,
-      rgba(5, 5, 5, .74) 45%,
-      rgba(5, 5, 5, .38) 62%,
-      rgba(5, 5, 5, .10) 100%
-    ),
-    /* Bottom vignette — anchors the page and scroll indicator */
-    linear-gradient(
-      to top,
-      rgba(5, 5, 5, .65) 0%,
-      rgba(5, 5, 5, .20) 22%,
-      transparent 44%
-    ),
-    /* Top vignette — keeps header area readable */
-    linear-gradient(
-      to bottom,
-      rgba(5, 5, 5, .55) 0%,
-      transparent 20%
-    );
+  background: linear-gradient(
+    to right,
+    rgba(5, 5, 5, .88) 0%,
+    rgba(5, 5, 5, .82) 25%,
+    rgba(5, 5, 5, .60) 42%,
+    rgba(5, 5, 5, .28) 62%,
+    rgba(5, 5, 5, .10) 100%
+  );
 }
 
 /* Decorative circles — red-tinted */
@@ -1509,14 +1489,14 @@ address    { font-style: normal; }
     background:
       linear-gradient(
         to bottom,
-        rgba(5, 5, 5, .85) 0%,
-        rgba(5, 5, 5, .70) 50%,
-        rgba(5, 5, 5, .82) 100%
+        rgba(5, 5, 5, .82) 0%,
+        rgba(5, 5, 5, .65) 50%,
+        rgba(5, 5, 5, .75) 100%
       );
   }
-  /* Center image on mobile so it reads well behind a full overlay */
+  /* Center image on mobile */
   .hero-image {
     object-position: center center;
-    opacity: 0.55;
+    opacity: 1;
   }
 }
